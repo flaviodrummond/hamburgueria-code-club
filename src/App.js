@@ -1,4 +1,5 @@
 import React from "react";
+import People from './assets/people.svg'
 import { Container, H1, Imagem, ContainerItens, InputLabel, Input, Button } from "./styles";
 
 
@@ -7,7 +8,7 @@ function App() {
   return (
     <Container>
 
-      <Imagem></Imagem>
+      <Imagem alt="logo" src={People}/>
 
       <ContainerItens>
 
