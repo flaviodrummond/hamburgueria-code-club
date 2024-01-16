@@ -1,12 +1,28 @@
 import React from "react";
-import { Container, H1 } from "./styles";
+import { Container, H1, Imagem, ContainerItens, InputLabel, Input, Button } from "./styles";
 
 
 function App() {
-  const home = "Home word"
+
   return (
     <Container>
-     <H1>{home}</H1>
+
+      <Imagem></Imagem>
+
+      <ContainerItens>
+
+      <H1>Faça seu Pedido !</H1>
+
+      <InputLabel>Pedido</InputLabel>
+      <Input placeholder="Pedido"/>
+
+      <InputLabel>Nome do Cliente</InputLabel>
+      <Input placeholder="Nome do Cliente"/>
+
+      <Button>Novo Pedido</Button>
+
+      </ContainerItens>
+
     </Container>
   )
 };
