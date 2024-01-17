@@ -82,3 +82,20 @@ cursor: pointer;
     opacity: .4;
 }
 `;
+
+export const Client = styled.li`
+    display: flex;
+    justify-content: space-around;
+    height: 58px;
+`;
+
+export const ContainerBag = styled.div `
+display: flex;
+justify-content: space-around;
+`;
+
+export const ContainerMin = styled.div `
+display: flex;
+flex-direction: column;
+`;
+
