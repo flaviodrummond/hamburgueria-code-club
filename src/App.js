@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }from "react";
 import People from './assets/people.svg'
 import Trash from './assets/trash.svg'
 import { Container, H1, Imagem, ContainerItens, InputLabel, Input, Button, Client, ContainerBag, ContainerMin } from "./styles";
@@ -6,7 +6,24 @@ import { Container, H1, Imagem, ContainerItens, InputLabel, Input, Button, Clien
 
 function App() {
 
-  const client = [{id: Math.random(), order: "1 x-salada, 1 coca-cola", clientName:"Flávio", price: 39.90, status:"Em preparação"}];
+  const [ clients, setClients ] = useState([]);
+  const [ request, setRequest ] = useState();
+  const [ newClient, setNewClient ] = useState();
+  
+  //[{id: Math.random(), order: "1 x-salada, 1 coca-cola", clientName:"Flávio"}];
+
+  function addNewRequest() {
+    setClients([{id: Math.random(), request, newClient}])
+
+  }
+
+  function changeInputRequest(event) {
+    setRequest(event.target.value)
+  }
+
+  function changeInputNewClient(event) {
+    setNewClient(event.target.value)
+  }
 
   return (
     <Container>
@@ -18,19 +35,19 @@ function App() {
       <H1>Faça seu Pedido !</H1>
 
       <InputLabel>Pedido</InputLabel>
-      <Input placeholder="Pedido"/>
+      <Input onChange={changeInputRequest} placeholder="Pedido"/>
 
       <InputLabel>Nome do Cliente</InputLabel>
-      <Input placeholder="Nome do Cliente"/>
+      <Input onChange={changeInputNewClient} placeholder="Nome do Cliente"/>
 
-      <Button>Novo Pedido</Button>
+      <Button onClick={addNewRequest}>Novo Pedido</Button>
 
       <ul>
         {
-          client.map( client =>(
+          clients.map( client =>(
         <Client key={client.id}>
-          <ContainerBag><ContainerMin> <p className="One" >{client.order}  </p>
-          <p className="Two" >{client.clientName}</p> </ContainerMin></ContainerBag>
+          <ContainerBag><ContainerMin> <p className="One" >{client.request}  </p>
+          <p className="Two" >{client.newClient}</p> </ContainerMin></ContainerBag>
           <button><img alt="Lixeira" src= {Trash}/></button>
 
         </Client>
