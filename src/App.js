@@ -29,8 +29,8 @@ function App() {
         {
           client.map( client =>(
         <Client key={client.id}>
-          <ContainerBag><containerMin> <p>{client.order}  </p>
-          <p>{client.clientName}</p> </containerMin></ContainerBag>
+          <ContainerBag><ContainerMin> <p className="One" >{client.order}  </p>
+          <p className="Two" >{client.clientName}</p> </ContainerMin></ContainerBag>
           <button><img alt="Lixeira" src= {Trash}/></button>
 
         </Client>
