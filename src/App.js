@@ -1,4 +1,4 @@
-import React, { useState }from "react";
+import React, { useState, useRef } from "react";
 import People from './assets/people.svg'
 import Trash from './assets/trash.svg'
 import { Container, H1, Imagem, ContainerItens, InputLabel, Input, Button, Client, ContainerBag, ContainerMin } from "./styles";
@@ -6,55 +6,49 @@ import { Container, H1, Imagem, ContainerItens, InputLabel, Input, Button, Clien
 
 function App() {
 
-  const [ clients, setClients ] = useState([]);
-  const [ request, setRequest ] = useState();
-  const [ newClient, setNewClient ] = useState();
-  
+  const [clients, setClients] = useState([]);
+  const inputRequest = useRef();
+  const inputnewClient = useRef();
+
   //[{id: Math.random(), order: "1 x-salada, 1 coca-cola", clientName:"Flávio"}];
 
   function addNewRequest() {
-    setClients([{id: Math.random(), request, newClient}])
 
-  }
+    setClients([...clients, { id: Math.random(), request: inputRequest.current.value, newClient: inputnewClient.current.value }])
 
-  function changeInputRequest(event) {
-    setRequest(event.target.value)
-  }
-
-  function changeInputNewClient(event) {
-    setNewClient(event.target.value)
   }
 
   return (
     <Container>
 
-      <Imagem alt="logo" src={People}/>
+      <Imagem alt="logo" src={People} />
 
       <ContainerItens>
 
-      <H1>Faça seu Pedido !</H1>
+        <H1>Faça seu Pedido !</H1>
 
-      <InputLabel>Pedido</InputLabel>
-      <Input onChange={changeInputRequest} placeholder="Pedido"/>
+        <InputLabel>Pedido</InputLabel>
+        <Input ref={inputRequest} placeholder="Pedido" />
 
-      <InputLabel>Nome do Cliente</InputLabel>
-      <Input onChange={changeInputNewClient} placeholder="Nome do Cliente"/>
+        <InputLabel>Nome do Cliente</InputLabel>
+        <Input ref={inputnewClient} placeholder="Nome do Cliente" />
 
-      <Button onClick={addNewRequest}>Novo Pedido</Button>
+        <Button onClick={addNewRequest}>Novo Pedido</Button>
 
-      <ul>
-        {
-          clients.map( client =>(
-        <Client key={client.id}>
-          <ContainerBag><ContainerMin> <p className="One" >{client.request}  </p>
-          <p className="Two" >{client.newClient}</p> </ContainerMin></ContainerBag>
-          <button><img alt="Lixeira" src= {Trash}/></button>
+        <ul>
+          {
+            clients.map(client => (
+              <Client key={client.id}>
+                <ContainerBag><ContainerMin> <p className="One" >{client.request}  </p>
+                  <br></br>
+                  <p className="Two" >{client.newClient}</p> </ContainerMin></ContainerBag>
+                <button><img alt="Lixeira" src={Trash} /></button>
 
-        </Client>
-          ))
-        }
-       
-      </ul>
+              </Client>
+            ))
+          }
+
+        </ul>
 
       </ContainerItens>
 

@@ -115,7 +115,8 @@ justify-content: space-around;
 export const ContainerMin = styled.div `
 display: flex;
 flex-direction: column;
-margin-top: 17px;
+align-content: center;
+justify-content: center;
 
 p.One {
 color: #FFF;
