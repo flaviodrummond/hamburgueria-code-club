@@ -8,13 +8,20 @@ function App() {
 
   const [clients, setClients] = useState([]);
   const inputRequest = useRef();
-  const inputnewClient = useRef();
+  const inputNewClient = useRef();
+
 
   //[{id: Math.random(), order: "1 x-salada, 1 coca-cola", clientName:"Flávio"}];
 
   function addNewRequest() {
 
-    setClients([...clients, { id: Math.random(), request: inputRequest.current.value, newClient: inputnewClient.current.value }])
+    setClients([...clients, { id: Math.random(), request: inputRequest.current.value, newClient: inputNewClient.current.value }])
+
+  }
+
+  function deleteRequest(clientId) {
+     const newRequest = clients.filter(client => client.id !== clientId);
+     setClients(newRequest)
 
   }
 
@@ -31,7 +38,7 @@ function App() {
         <Input ref={inputRequest} placeholder="Pedido" />
 
         <InputLabel>Nome do Cliente</InputLabel>
-        <Input ref={inputnewClient} placeholder="Nome do Cliente" />
+        <Input ref={inputNewClient} placeholder="Nome do Cliente" />
 
         <Button onClick={addNewRequest}>Novo Pedido</Button>
 
@@ -42,7 +49,7 @@ function App() {
                 <ContainerBag><ContainerMin> <p className="One" >{client.request}  </p>
                   <br></br>
                   <p className="Two" >{client.newClient}</p> </ContainerMin></ContainerBag>
-                <button><img alt="Lixeira" src={Trash} /></button>
+                <button onClick={() => deleteRequest(client.id)} ><img alt="Lixeira" src={Trash} /></button>
 
               </Client>
             ))
