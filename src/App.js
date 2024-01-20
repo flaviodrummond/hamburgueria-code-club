@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import axios from "axios";
 import People from './assets/people.svg'
 import Trash from './assets/trash.svg'
 import { Container, H1, Imagem, ContainerItens, InputLabel, Input, Button, Client, ContainerBag, ContainerMin } from "./styles";
@@ -13,9 +14,15 @@ function App() {
 
   //[{id: Math.random(), order: "1 x-salada, 1 coca-cola", clientName:"Flávio"}];
 
-  function addNewRequest() {
+  async function addNewRequest() {
 
-    setClients([...clients, { id: Math.random(), request: inputRequest.current.value, newClient: inputNewClient.current.value }])
+    const data = await axios.post("http://localhost:3900/order",{
+    ordem: inputRequest.current.value, 
+    clientName: inputNewClient.current.value});
+
+    console.log(data)
+
+    // setClients([...clients, { id: Math.random(), request: inputRequest.current.value, newClient: inputNewClient.current.value }])
 
   }
 
