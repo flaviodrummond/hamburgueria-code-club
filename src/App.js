@@ -16,19 +16,18 @@ function App() {
 
   async function addNewRequest() {
 
-    const data = await axios.post("http://localhost:3900/order",{
-    ordem: inputRequest.current.value, 
-    clientName: inputNewClient.current.value});
+    const { data: newOrdem } = await axios.post("http://localhost:3900/order", {
+      order: inputRequest.current.value,
+      clientName: inputNewClient.current.value
+    });
 
-    console.log(data)
-
-    // setClients([...clients, { id: Math.random(), request: inputRequest.current.value, newClient: inputNewClient.current.value }])
+    setClients([...clients, newOrdem])
 
   }
 
   function deleteRequest(clientId) {
-     const newRequest = clients.filter(client => client.id !== clientId);
-     setClients(newRequest)
+    const newRequest = clients.filter(client => client.id !== clientId);
+    setClients(newRequest)
 
   }
 
