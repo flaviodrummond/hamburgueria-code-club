@@ -48,7 +48,7 @@ function App() {
 
       <ContainerItens>
 
-        <H1>Faça seu Pedido !</H1>
+        <H1> Pedidos </H1>
 
         <InputLabel>Pedido</InputLabel>
         <Input ref={inputRequest} placeholder="Pedido" />
