@@ -34,7 +34,8 @@ function App() {
     fetchClients()
   }, [])
 
-  function deleteRequest(clientId) {
+  async function deleteRequest(clientId) {
+    await axios.delete(`http://localhost:3900/order/${clientId}`);
     const newRequest = clients.filter(client => client.id !== clientId);
     setClients(newRequest)
 
