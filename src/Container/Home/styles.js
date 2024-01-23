@@ -28,7 +28,7 @@ font-size: 28px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
-margin-bottom: 76px;
+margin: 25px 0px 76px;
 `;
 
 export const InputLabel = styled.p`
@@ -101,39 +101,6 @@ background: none;
 border: none;
 cursor: pointer;
 }
-
-
-
 `;
 
-export const ContainerBag = styled.div `
-display: flex;
-justify-content: space-around;
-
-`;
-
-export const ContainerMin = styled.div `
-display: flex;
-flex-direction: column;
-align-content: center;
-justify-content: center;
-
-p.One {
-color: #FFF;
-font-size: 18px;
-font-style: normal;
-font-weight: 300;
-line-height: normal
-}
-
-p.Two {
-color: #FFF;
-font-size: 18px;
-font-style: normal;
-font-weight: 700;
-line-height: normal
-}
-
-
-`;
 

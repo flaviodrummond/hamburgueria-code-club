@@ -1,29 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import People from './assets/people.svg'
-import Trash from './assets/trash.svg'
-import { Container, H1, Imagem, ContainerItens, InputLabel, Input, Button, Client, ContainerBag, ContainerMin } from "./styles";
+import Bag from '../../assets/bag.svg'
+import Trash from '../../assets/trash.svg'
+import { Container, H1, Imagem, ContainerItens, Button, Client, ContainerBag, ContainerMin } from "./styles";
 
 
-function App() {
+function Request() {
 
   const [clients, setClients] = useState([]);
-  const inputRequest = useRef();
-  const inputNewClient = useRef();
 
 
   //[{id: Math.random(), order: "1 x-salada, 1 coca-cola", clientName:"Flávio"}];
-
- async function addNewRequest() {
-
-    const { data: newOrder } = await axios.post("http://localhost:3900/order", {
-      order: inputRequest.current.value,
-      clientName: inputNewClient.current.value
-    });
-
-     setClients([...clients, newOrder])  
-
-  }
 
   useEffect(() => {
     async function fetchClients(){
@@ -44,19 +31,11 @@ function App() {
   return (
     <Container>
 
-      <Imagem alt="logo" src={People} />
+      <Imagem alt="logo" src={Bag} />
 
       <ContainerItens>
 
         <H1> Pedidos </H1>
-
-        <InputLabel>Pedido</InputLabel>
-        <Input ref={inputRequest} placeholder="Pedido" />
-
-        <InputLabel>Nome do Cliente</InputLabel>
-        <Input ref={inputNewClient} placeholder="Nome do Cliente" />
-
-        <Button onClick={addNewRequest}>Novo Pedido</Button>
 
         <ul>
           {
@@ -73,10 +52,12 @@ function App() {
 
         </ul>
 
+        <Button>Voltar</Button>
+
       </ContainerItens>
 
     </Container>
   )
 };
 
-export default App;
+export default Request;
