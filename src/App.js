@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import People from './assets/people.svg'
 import Trash from './assets/trash.svg'
@@ -14,16 +14,25 @@ function App() {
 
   //[{id: Math.random(), order: "1 x-salada, 1 coca-cola", clientName:"Flávio"}];
 
-  async function addNewRequest() {
+ async function addNewRequest() {
 
-    const { data: newOrdem } = await axios.post("http://localhost:3900/order", {
+    const { data: newOrder } = await axios.post("http://localhost:3900/order", {
       order: inputRequest.current.value,
       clientName: inputNewClient.current.value
     });
 
-    setClients([...clients, newOrdem])
+     setClients([...clients, newOrder])  
 
   }
+
+  useEffect(() => {
+    async function fetchClients(){
+      const { data: newClient} = await axios.get("http://localhost:3900/order");
+     setClients(newClient);
+    }
+
+    fetchClients()
+  }, [])
 
   function deleteRequest(clientId) {
     const newRequest = clients.filter(client => client.id !== clientId);
@@ -52,9 +61,9 @@ function App() {
           {
             clients.map(client => (
               <Client key={client.id}>
-                <ContainerBag><ContainerMin> <p className="One" >{client.request}  </p>
+                <ContainerBag><ContainerMin> <p className="One" >{client.order}  </p>
                   <br></br>
-                  <p className="Two" >{client.newClient}</p> </ContainerMin></ContainerBag>
+                  <p className="Two" >{client.clientName}</p> </ContainerMin></ContainerBag>
                 <button onClick={() => deleteRequest(client.id)} ><img alt="Lixeira" src={Trash} /></button>
 
               </Client>
