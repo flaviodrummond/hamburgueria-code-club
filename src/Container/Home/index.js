@@ -39,7 +39,7 @@ function App() {
         <InputLabel>Nome do Cliente</InputLabel>
         <Input ref={inputNewClient} placeholder="Nome do Cliente" />
 
-        <Button onClick={addNewRequest}>Novo Pedido</Button>
+        <Button to="/pedidos" onClick={addNewRequest}>Novo Pedido</Button>
 
       </ContainerItens>
 

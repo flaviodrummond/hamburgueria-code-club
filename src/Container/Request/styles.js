@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 import Background from '../../assets/background.svg'
 
 
@@ -32,11 +33,12 @@ line-height: normal;
 margin-top: 25px;
 `;
 
-export const Button = styled.button`
+export const Button = styled(Link)`
 background: rgba(255, 255, 255, 0.14);
 width: 342px;
 height: 68px;
 padding: 0px 113px;
+display: flex;
 justify-content: center;
 align-items: center;
 border: none;

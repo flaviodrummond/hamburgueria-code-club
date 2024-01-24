@@ -1,5 +1,7 @@
-import styled from 'styled-components'
-import Background from '../../assets/background.svg'
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import Background from '../../assets/background.svg';
+
 
 
 export const Container = styled.div`
@@ -57,11 +59,12 @@ line-height: normal;
 margin-bottom: 45px;
 `;
 
-export const Button = styled.button`
+export const Button = styled(Link)`
 background: #D93856;
 width: 342px;
 height: 68px;
 padding: 0px 113px;
+display: flex;
 justify-content: center;
 align-items: center;
 border: none;
@@ -80,27 +83,4 @@ cursor: pointer;
 }
 &:active {
     opacity: .4;
-}
-`;
-
-export const Client = styled.li`
-display: flex;
-justify-content: space-around;
-height: 58px;
-
-border-radius: 14px;
-background: rgba(255, 255, 255, 0.25);
-
-width: 342px;
-height: 101px;
-flex-shrink: 0;
-margin-top: 30px;
-
-button {
-background: none;
-border: none;
-cursor: pointer;
-}
-`;
-
-
+}`;
