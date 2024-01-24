@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Bag from '../../assets/bag.svg'
 import Trash from '../../assets/trash.svg'
@@ -8,7 +9,7 @@ import { Container, H1, Imagem, ContainerItens, Button, Client, ContainerBag, Co
 function Request() {
 
   const [clients, setClients] = useState([]);
-
+  const navigate = useNavigate();
 
   //[{id: Math.random(), order: "1 x-salada, 1 coca-cola", clientName:"Flávio"}];
 
@@ -26,6 +27,10 @@ function Request() {
     const newRequest = clients.filter(client => client.id !== clientId);
     setClients(newRequest)
 
+  }
+
+  function goBackHome() {
+    navigate("/")
   }
 
   return (
@@ -52,7 +57,7 @@ function Request() {
 
         </ul>
 
-        <Button to="/">Voltar</Button>
+        <Button onClick={goBackHome}>Voltar</Button>
 
       </ContainerItens>
 

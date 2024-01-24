@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import People from '../../assets/people.svg';
 import { Container, H1, Imagem, ContainerItens, InputLabel, Input, Button } from "./styles";
@@ -7,6 +8,7 @@ import { Container, H1, Imagem, ContainerItens, InputLabel, Input, Button } from
 function App() {
 
   const [clients, setClients] = useState([]);
+  const navigate = useNavigate();
   const inputRequest = useRef();
   const inputNewClient = useRef();
 
@@ -20,7 +22,8 @@ function App() {
       clientName: inputNewClient.current.value
     });
 
-     setClients([...clients, newOrder])  
+     setClients([...clients, newOrder]);
+     navigate("/pedidos")  
 
   }
 
@@ -39,7 +42,7 @@ function App() {
         <InputLabel>Nome do Cliente</InputLabel>
         <Input ref={inputNewClient} placeholder="Nome do Cliente" />
 
-        <Button to="/pedidos" onClick={addNewRequest}>Novo Pedido</Button>
+        <Button onClick={addNewRequest}>Novo Pedido</Button>
 
       </ContainerItens>
 
