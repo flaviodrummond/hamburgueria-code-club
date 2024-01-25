@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Bag from '../../assets/bag.svg'
-import Trash from '../../assets/trash.svg'
-import { Container, H1, Imagem, ContainerItens, Button, Client, ContainerBag, ContainerMin } from "./styles";
+import Bag from '../../assets/bag.svg';
+import Trash from '../../assets/trash.svg';
+import H1 from '../../components/Title';
+import Button from "../../components/Button";
+import { Container, Imagem, ContainerItens, Client, ContainerBag, ContainerMin } from "./styles";
 
 
 function Request() {
@@ -40,7 +42,7 @@ function Request() {
 
       <ContainerItens>
 
-        <H1> Pedidos </H1>
+        <H1 marginBotton={true}> Pedidos </H1>
 
         <ul>
           {
@@ -57,7 +59,7 @@ function Request() {
 
         </ul>
 
-        <Button onClick={goBackHome}>Voltar</Button>
+        <Button isBack={true} onClick={goBackHome}>Voltar</Button>
 
       </ContainerItens>
 

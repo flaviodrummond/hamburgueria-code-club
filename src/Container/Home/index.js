@@ -2,8 +2,9 @@ import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import People from '../../assets/people.svg';
-import { H1 } from "../../components/Title";
-import { Container, Imagem, ContainerItens, InputLabel, Input, Button } from "./styles";
+import H1 from "../../components/Title";
+import Button from "../../components/Button";
+import { Container, Imagem, ContainerItens, InputLabel, Input } from "./styles";
 
 
 function App() {
